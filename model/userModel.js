@@ -8,9 +8,9 @@ const userSchema = Schema(
       required: true,
     },
   },
-  { 
-      timestamps: true, 
-    }
+  {
+    timestamps: true,
+  }
 );
 
 userSchema.methods.generateJWT = function () {
@@ -22,6 +22,7 @@ userSchema.methods.generateJWT = function () {
     process.env.JWT_SECRET_KEY,
     { expiresIn: "7d" }
   );
+  return token;
 };
 
 module.exports.User = model("User", userSchema);
